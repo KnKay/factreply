@@ -1,7 +1,5 @@
 package net.versteht.factreply.model
 
-
-
 interface FactRepository {
     fun allFacts(): List<Fact>
     fun addFact(fact: Fact)

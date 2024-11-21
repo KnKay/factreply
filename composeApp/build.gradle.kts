@@ -46,6 +46,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(projects.shared)
             implementation(libs.serialization)
+            implementation(libs.sqlite.jdbc)
+            implementation(libs.sqlite.dialect)
+
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
