@@ -8,5 +8,7 @@ https://ondrej-kvasnovsky.medium.com/flyway-with-spring-in-kotlin-18c0f4553144
 
 https://ktor.io/docs/server-integrate-database.html#create-schema
 
+https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-run-tests.html#test-a-simple-multiplatform-project
+
 evtl
 https://hibernate.org/orm/
