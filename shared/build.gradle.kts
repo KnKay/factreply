@@ -30,9 +30,12 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.serialization)
             implementation(libs.exposed.dao)
+            implementation(libs.exposed.jdbc)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+            implementation(libs.kotlinx.coroutines.test)
+            implementation(libs.h2)
         }
     }
 }

@@ -1,9 +1,7 @@
 package net.versteht.factreply.model
 
 import net.versteht.factreply.database.*
-
-import org.jetbrains.exposed.sql.SqlExpressionBuilder.eq
-import org.jetbrains.exposed.sql.deleteWhere
+import org.jetbrains.exposed.sql.transactions.transaction
 
 class CategoryRepositoryJdbc : CategoryRepository {
     override suspend fun allCategories(): List<Category> = suspendTransaction {
@@ -22,6 +20,12 @@ class CategoryRepositoryJdbc : CategoryRepository {
             .limit(1)
             .map(::daoToModel)
             .firstOrNull()
+    }
+
+    override fun allCategoriesTest(): List<Category> {
+        return transaction {
+            CategoryDAO.all().map(::daoToModel)
+        }
     }
 
 }
