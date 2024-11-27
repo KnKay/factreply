@@ -15,7 +15,7 @@ import org.junit.Before
 import kotlin.test.assertEquals
 
 class CategoryRepositoryJdbcUnitTest {
-    var dut = CategoryRepositoryJdbc()
+    private var dut = CategoryRepositoryJdbc()
     @Before
     fun setup() {
         Database.connect("jdbc:h2:mem:test;DB_CLOSE_DELAY=-1", driver = "org.h2.Driver")

@@ -1,8 +1,8 @@
 package net.versteht.factreply.model
 
 interface FactRepository {
-    fun allFacts(): List<Fact>
-    fun addFact(fact: Fact)
-    fun removeFact(name: String): Boolean
-    fun factsByCategory(category: String): List<Fact>
+    suspend fun allFacts(): List<Fact>
+    suspend fun addFact(fact: Fact)
+    suspend fun removeFact(name: String): Boolean
+    suspend fun factsByCategory(category: String): List<Fact>
 }

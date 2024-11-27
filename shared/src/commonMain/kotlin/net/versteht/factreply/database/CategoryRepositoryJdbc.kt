@@ -6,7 +6,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 class CategoryRepositoryJdbc : CategoryRepository {
     override suspend fun allCategories(): List<Category> = suspendTransaction {
-        CategoryDAO.all().map(::daoToModel)
+        CategoryDAO.all().map(::daoToCategory)
     }
 
     override suspend fun addCategory(category: Category): Unit = suspendTransaction {
@@ -19,13 +19,13 @@ class CategoryRepositoryJdbc : CategoryRepository {
         CategoryDAO
             .find { (CategoryTable.name eq name) }
             .limit(1)
-            .map(::daoToModel)
+            .map(::daoToCategory)
             .firstOrNull()
     }
 
     override fun allCategoriesTest(): List<Category> {
         return transaction {
-            CategoryDAO.all().map(::daoToModel)
+            CategoryDAO.all().map(::daoToCategory)
         }
     }
 
