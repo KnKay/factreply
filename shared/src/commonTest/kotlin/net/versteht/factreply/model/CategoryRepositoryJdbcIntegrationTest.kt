@@ -10,6 +10,7 @@ import org.jetbrains.exposed.sql.transactions.transaction
 
 import kotlin.test.Test
 import kotlinx.coroutines.test.runTest
+import net.versteht.factreply.database.CategoryRepositoryJdbc
 import org.junit.After
 import org.junit.Before
 import java.io.File

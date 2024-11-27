@@ -20,9 +20,6 @@ class CategoryDAO(id: EntityID<Int>) : IntEntity(id) {
     var name by CategoryTable.name
 }
 
-suspend fun <T> suspendTransaction(block: Transaction.() -> T): T =
-    newSuspendedTransaction(Dispatchers.IO, statement = block)
-
 fun daoToModel(dao: CategoryDAO) = Category(
     dao.name,
 )

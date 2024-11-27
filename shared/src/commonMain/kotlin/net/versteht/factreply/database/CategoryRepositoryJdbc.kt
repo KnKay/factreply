@@ -1,6 +1,7 @@
-package net.versteht.factreply.model
+package net.versteht.factreply.database
 
-import net.versteht.factreply.database.*
+import net.versteht.factreply.model.Category
+import net.versteht.factreply.model.CategoryRepository
 import org.jetbrains.exposed.sql.transactions.transaction
 
 class CategoryRepositoryJdbc : CategoryRepository {

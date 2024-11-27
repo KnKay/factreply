@@ -1,8 +1,8 @@
 package net.versteht.factreply.model
 
 data class Fact (
-    val reply: String,
-    val categories: List<String>,
-    val sources: List<String>
+    val answer: String,
+    val category: Category,
+    val sourceLink: List<String>
 )
 
