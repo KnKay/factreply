@@ -31,6 +31,7 @@ kotlin {
             implementation(libs.serialization)
             implementation(libs.exposed.dao)
             implementation(libs.exposed.jdbc)
+            implementation(libs.sqlite.jdbc)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

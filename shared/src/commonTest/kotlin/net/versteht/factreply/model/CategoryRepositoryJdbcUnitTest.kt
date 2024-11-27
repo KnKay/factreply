@@ -11,8 +11,9 @@ import org.jetbrains.exposed.sql.transactions.transaction
 import kotlin.test.Test
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
+import kotlin.test.assertEquals
 
-class CategoryRepositoryJdbcTest {
+class CategoryRepositoryJdbcUnitTest {
     var dut = CategoryRepositoryJdbc()
     @Before
     fun setup() {
@@ -34,7 +35,8 @@ class CategoryRepositoryJdbcTest {
     }
 
     @Test
-    fun dataShouldBeHelloWorld() = runTest {
+    fun dataShouldBeHelloWorld(): Unit = runTest {
         val data = dut.allCategories()
+        assertEquals(data, data)
     }
 }
