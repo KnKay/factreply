@@ -18,11 +18,17 @@ import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun Category() {
+    val countries = listOf("Germany", "India", "Japan", "Brazil", "Australia")
     MaterialTheme {
         Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 text = "Category",
             )
+            for (country in countries) {
+                Text(
+                    text = country,
+                )
+            }
         }
     }
 }

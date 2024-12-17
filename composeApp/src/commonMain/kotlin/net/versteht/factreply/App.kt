@@ -17,7 +17,6 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import factreply.composeapp.generated.resources.Res
 import factreply.composeapp.generated.resources.compose_multiplatform
 import net.versteht.factreply.view.Category
-import org.jetbrains.exposed.sql.Column
 
 @Composable
 @Preview
