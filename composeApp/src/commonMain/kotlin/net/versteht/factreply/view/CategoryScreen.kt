@@ -1,11 +1,9 @@
 package net.versteht.factreply.view
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
@@ -16,37 +14,43 @@ class CategoryListScreen : Screen {
 
     @Composable
     override fun Content(){
-        MaterialTheme {
-            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(
-                    text = "Category ",
-                )
-                for (country in countries) {
-                    Text(
-                        text = country,
-                    )
-                }
+        val navigator = LocalNavigator.current
+        Scaffold (
+            topBar = { TopAppBar(title = { Text("Categories") }) },
+            content = {
+                contentPadding ->
+                    Column(modifier = Modifier.padding(contentPadding)) {
+                        for ((index, value )in countries.iterator().withIndex()){
+                            Button(onClick = {
+                                // Navigate to details screen with the arguments
+                                navigator?.push(CategoryDetailScreen(index))
+                            }) {
+                                Text(text = "Go to details of $value")
+                            }
+                        }
+                    }
             }
-        }
+        )
     }
 }
 
-class CategoryScreen(val categoryId: Int) : Screen {
+data class CategoryDetailScreen(val item: Int) : Screen {
     @Composable
-    override fun Content(){
-        val country = countries[categoryId]
+    override fun Content() {
         val navigator = LocalNavigator.current
+        val name = countries[item]
         Scaffold(
             topBar = {
                 TopAppBar(title = { Text("Detail") })
             },
             content = { contentPadding ->
                 Column(modifier = Modifier.padding(contentPadding)) {
-                    Text(text = "Details of $country")
+                    Text(text = "Details of $name")
                     Button(onClick = {
+                        // Pop to backstack
                         navigator?.pop()
                     }) {
-                        Text(text = "Back")
+                        Text(text = "Back to Home")
                     }
                 }
             }

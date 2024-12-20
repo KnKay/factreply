@@ -2,7 +2,6 @@ package net.versteht.factreply.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
@@ -13,26 +12,16 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.Navigator
 
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.*
-import org.jetbrains.compose.resources.*
 
 // https://medium.com/@ahmedeelkhami/effortless-navigation-with-voyager-compose-multiplatform-development-145558b6247e
-object HomeScreen : Tab {
+object HomeTab : Tab {
     @Composable
     override fun Content(){
-        val navigator = LocalNavigator.current
-        Scaffold (
-            topBar = {
-                TopAppBar(title = { Text("Home") })
-            },
-            content = { contentPadding ->
-                Column(modifier = Modifier.padding(contentPadding)) {
-                    Text(text = "Home Screen Thingy")
-                }
-            }
-        )
+        Navigator(CategoryListScreen())
     }
 
     override val options: TabOptions
