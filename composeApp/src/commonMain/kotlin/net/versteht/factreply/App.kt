@@ -8,14 +8,20 @@ import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import net.versteht.factreply.di.appModule
 
 import net.versteht.factreply.view.*
-//import net.versteht.factreply.view.Category
+import org.koin.compose.KoinApplication
 
 
-object App {
-    @Composable
-    fun Content() {
+@Composable
+fun App() {
+    KoinApplication(
+        application = {
+            modules(appModule)
+        }
+    )
+        {
         Surface(
             modifier = Modifier.fillMaxSize(),
         ) {
@@ -34,9 +40,11 @@ object App {
             }
         }
     }
+}
 
-    @Composable
-    private fun RowScope.TabNavigationItem(tab: Tab) {
+
+@Composable
+fun RowScope.TabNavigationItem(tab: Tab) {
         val navigator = LocalTabNavigator.current
 
         BottomNavigationItem(
@@ -52,4 +60,3 @@ object App {
             }
         )
     }
-}

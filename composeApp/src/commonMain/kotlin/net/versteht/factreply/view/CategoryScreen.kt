@@ -7,14 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import net.versteht.factreply.database.CategoryRepositoryJdbc
+import net.versteht.factreply.model.CategoryRepository
+import org.koin.compose.koinInject
 
 val countries = listOf("Germany", "India", "Japan", "Brazil", "Australia")
-
+//https://insert-koin.io/docs/reference/koin-compose/compose/
 class CategoryListScreen : Screen {
+
 
     @Composable
     override fun Content(){
         val navigator = LocalNavigator.current
+        val myService = koinInject<CategoryRepositoryJdbc>()
         Scaffold (
             topBar = { TopAppBar(title = { Text("Categories") }) },
             content = {
