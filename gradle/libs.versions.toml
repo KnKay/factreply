@@ -34,8 +34,8 @@ sqlite-jdbc = { module = "org.xerial:sqlite-jdbc", version.ref = "sqlite" }
 flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway"}
 voyager-navigation = {module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-screenmodel = {module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
-voyager-bottom_sheet_navigator = {module = "cafe.adriel.voyager:voyager--bottom-sheet-navigator", version.ref = "voyager" }
-voyager-tab_navigator = {module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-bottom_sheet_navigator = {module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+voyager-tabnavigator = {module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
 
 [plugins]
 composeMultiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }

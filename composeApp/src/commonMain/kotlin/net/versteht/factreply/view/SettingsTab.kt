@@ -2,34 +2,31 @@ package net.versteht.factreply.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import cafe.adriel.voyager.navigator.LocalNavigator
-
 import cafe.adriel.voyager.navigator.tab.Tab
-import cafe.adriel.voyager.navigator.tab.*
-import org.jetbrains.compose.resources.*
+import cafe.adriel.voyager.navigator.tab.TabOptions
 
-// https://medium.com/@ahmedeelkhami/effortless-navigation-with-voyager-compose-multiplatform-development-145558b6247e
-object HomeScreen : Tab {
+object SettingsTab : Tab{
     @Composable
-    override fun Content(){
+    override fun Content() {
         val navigator = LocalNavigator.current
         Scaffold (
             topBar = {
-                TopAppBar(title = { Text("Home") })
+                TopAppBar(title = { Text("Settings") })
             },
             content = { contentPadding ->
                 Column(modifier = Modifier.padding(contentPadding)) {
-                    Text(text = "Home Screen Thingy")
+                    Text(text = "Settings Screen Thingy")
                 }
             }
         )
@@ -39,12 +36,12 @@ object HomeScreen : Tab {
         @Composable
         get() {
 
-            val icon = rememberVectorPainter(Icons.Default.Home)
+            val icon = rememberVectorPainter(Icons.Default.Settings)
 
             return remember {
                 TabOptions(
-                    index = 0u,
-                    title = "Home",
+                    index = 1u,
+                    title = "Settings",
                     icon = icon
                 )
             }
