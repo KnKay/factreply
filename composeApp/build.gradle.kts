@@ -46,6 +46,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(projects.shared)
             implementation(libs.exposed.dao)
+            implementation(libs.voyager.navigation)
+            implementation(libs.voyager.tabnavigator)
+            implementation(libs.voyager.screenmodel)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
