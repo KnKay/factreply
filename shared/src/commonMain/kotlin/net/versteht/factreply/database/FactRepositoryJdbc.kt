@@ -6,7 +6,6 @@ import net.versteht.factreply.model.FactRepository
 
 class FactRepositoryJdbc : FactRepository {
     suspend override fun allFacts(): List<Fact> = suspendTransaction {
-        TODO("Not yet implemented")
         FactDAO.all().map(::daoToFact)
     }
 

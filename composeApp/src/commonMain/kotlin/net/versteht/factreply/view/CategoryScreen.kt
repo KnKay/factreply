@@ -7,7 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
+import kotlinx.coroutines.runBlocking
 import net.versteht.factreply.database.CategoryRepositoryJdbc
+import net.versteht.factreply.model.Category
 import net.versteht.factreply.model.CategoryRepository
 import org.koin.compose.koinInject
 
@@ -20,19 +22,25 @@ class CategoryListScreen : Screen {
     override fun Content(){
         val navigator = LocalNavigator.current
         val myService = koinInject<CategoryRepositoryJdbc>()
+
+        val cats = runBlocking{
+            val cats = myService.allCategories()
+            return@runBlocking cats
+        }
         Scaffold (
             topBar = { TopAppBar(title = { Text("Categories") }) },
             content = {
                 contentPadding ->
                     Column(modifier = Modifier.padding(contentPadding)) {
-                        for ((index, value )in countries.iterator().withIndex()){
+                       for (cat in cats){
                             Button(onClick = {
                                 // Navigate to details screen with the arguments
-                                navigator?.push(CategoryDetailScreen(index))
+                                navigator?.push(FactList(cat.name))
                             }) {
-                                Text(text = "Go to details of $value")
+                                Text(text = "Go to details of ${cat.name}")
                             }
-                        }
+                       }
+
                     }
             }
         )
