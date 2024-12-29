@@ -8,19 +8,51 @@ import cafe.adriel.voyager.navigator.tab.CurrentTab
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
+import net.versteht.factreply.database.CategoryTable
+import net.versteht.factreply.database.CategoryTable.name
+import net.versteht.factreply.database.FactTable
 import net.versteht.factreply.di.appModule
 
 import net.versteht.factreply.view.*
+import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.SchemaUtils
+import org.jetbrains.exposed.sql.StdOutSqlLogger
+import org.jetbrains.exposed.sql.addLogger
+import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.transactions.transaction
 import org.koin.compose.KoinApplication
 
 
 @Composable
 fun App() {
+    Database.connect("jdbc:sqlite:./data.db", "org.sqlite.JDBC")
+    transaction{
+        addLogger(StdOutSqlLogger)
+        SchemaUtils.create(CategoryTable)
+        SchemaUtils.create(FactTable)
+        try {
+            val taskId = CategoryTable.insert {
+                it[name] = "training"
+            }
+
+        }catch (e: Exception){
+        }
+        try {
+            FactTable.insert {
+                it[answer] = "god damn one"
+                it[sourceLink] = "internet"
+                it[category] = 1
+            }
+        } catch (e: Exception){
+        }
+
+    }
     KoinApplication(
         application = {
             modules(appModule)
         }
     )
+
         {
         Surface(
             modifier = Modifier.fillMaxSize(),
