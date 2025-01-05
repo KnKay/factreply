@@ -9,8 +9,7 @@ import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabNavigator
 import net.versteht.factreply.database.CategoryTable
-import net.versteht.factreply.database.CategoryTable.name
-import net.versteht.factreply.database.FactTable
+import net.versteht.factreply.database.*
 import net.versteht.factreply.di.appModule
 
 import net.versteht.factreply.view.*
@@ -30,9 +29,13 @@ fun App() {
         addLogger(StdOutSqlLogger)
         SchemaUtils.create(CategoryTable)
         SchemaUtils.create(FactTable)
+        SchemaUtils.create(ThemeTable)
         try {
-            val taskId = CategoryTable.insert {
-                it[name] = "training"
+            CategoryTable.insert {
+                it[name] = "Goodnews"
+            }
+            ThemeTable.insert {
+                it[name] = "Energie"
             }
 
         }catch (e: Exception){
@@ -42,6 +45,7 @@ fun App() {
                 it[answer] = "god damn one"
                 it[sourceLink] = "internet"
                 it[category] = 1
+                it[theme] = 1
             }
         } catch (e: Exception){
         }
