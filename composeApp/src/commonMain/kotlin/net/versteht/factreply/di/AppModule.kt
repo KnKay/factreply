@@ -11,4 +11,5 @@ import org.koin.dsl.bind
 val appModule = module {
     single { CategoryRepositoryJdbc() }
     single { FactRepositoryJdbc() }
+    single { ThemeRepositoryJdbc() }
 }

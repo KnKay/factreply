@@ -7,7 +7,7 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 import net.versteht.factreply.model.Theme
 
-object ThemeTable : IntIdTable("Theme") {
+object ThemeTable : IntIdTable("theme") {
     val name = varchar("name", 50).uniqueIndex()
 }
 

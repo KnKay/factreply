@@ -5,5 +5,6 @@ data class Fact (
     val category: Category,
     val sourceLink: String,
     val theme: Theme,
+    val tldr: String,
 )
 

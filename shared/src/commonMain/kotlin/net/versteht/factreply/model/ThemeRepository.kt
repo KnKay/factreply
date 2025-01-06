@@ -1,7 +1,7 @@
 package net.versteht.factreply.model
 
 interface ThemeRepository {
-    suspend fun allThemes(): List<Category>
-    suspend fun addTheme(category: Category)
-    suspend fun getThemeByName(name: String): Category?
+    suspend fun allThemes(): List<Theme>
+    suspend fun addTheme(theme: Theme)
+    suspend fun getThemeByName(name: String): Theme?
 }
