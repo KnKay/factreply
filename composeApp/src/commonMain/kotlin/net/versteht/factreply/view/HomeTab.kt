@@ -21,7 +21,7 @@ import cafe.adriel.voyager.navigator.tab.*
 object HomeTab : Tab {
     @Composable
     override fun Content(){
-        Navigator(CategoryListScreen())
+        Navigator(ThemeListScreen())
     }
 
     override val options: TabOptions

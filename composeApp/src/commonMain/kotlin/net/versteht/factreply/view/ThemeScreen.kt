@@ -9,25 +9,26 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.LocalNavigator
 import kotlinx.coroutines.runBlocking
 import net.versteht.factreply.database.CategoryRepositoryJdbc
+import net.versteht.factreply.database.ThemeRepositoryJdbc
 import net.versteht.factreply.model.Category
 import net.versteht.factreply.model.CategoryRepository
 import org.koin.compose.koinInject
 
 //https://insert-koin.io/docs/reference/koin-compose/compose/
-class CategoryListScreen : Screen {
+class ThemeListScreen : Screen {
 
 
     @Composable
     override fun Content(){
         val navigator = LocalNavigator.current
-        val myService = koinInject<CategoryRepositoryJdbc>()
+        val myService = koinInject<ThemeRepositoryJdbc>()
 
         val cats = runBlocking{
-            val cats = myService.allCategories()
+            val cats = myService.allThemes()
             return@runBlocking cats
         }
         Scaffold (
-            topBar = { TopAppBar(title = { Text("Categories") }) },
+            topBar = { TopAppBar(title = { Text("Themes") }) },
             content = {
                 contentPadding ->
                     Column(modifier = Modifier.padding(contentPadding)) {

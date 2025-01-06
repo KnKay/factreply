@@ -10,5 +10,7 @@ https://ktor.io/docs/server-integrate-database.html#create-schema
 
 https://www.jetbrains.com/help/kotlin-multiplatform-dev/multiplatform-run-tests.html#test-a-simple-multiplatform-project
 
+https://insert-koin.io/docs/reference/koin-compose/compose
+https://medium.com/@ahmedeelkhami/effortless-navigation-with-voyager-compose-multiplatform-development-145558b6247e
 evtl
 https://hibernate.org/orm/

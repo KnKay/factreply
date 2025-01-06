@@ -8,9 +8,11 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.dao.id.IntIdTable
 
 object FactTable: IntIdTable("fact") {
-    val answer = varchar("answer", 50)
+    val answer = varchar("answer", 150)
+    val tldr = varchar("tldr", 50)
     val sourceLink = varchar("sourceLink", 50)
     val category = reference("category", CategoryTable)
+    val theme = reference("theme", ThemeTable)
 }
 
 class FactDAO(id: EntityID<Int>): IntEntity(id) {
@@ -19,10 +21,14 @@ class FactDAO(id: EntityID<Int>): IntEntity(id) {
     var answer by FactTable.answer
     var sourceLink by  FactTable.sourceLink
     var category by CategoryDAO referencedOn  FactTable.category
+    var theme by ThemeDAO referencedOn  FactTable.theme
+    var tldr by FactTable.tldr
 }
 
 fun daoToFact(dao: FactDAO) = Fact(
     dao.answer,
     daoToCategory(dao.category),
-    dao.sourceLink
+    dao.sourceLink,
+    daoToTheme(dao.theme),
+    dao.tldr
 )

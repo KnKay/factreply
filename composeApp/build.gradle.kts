@@ -49,6 +49,9 @@ kotlin {
             implementation(libs.voyager.navigation)
             implementation(libs.voyager.tabnavigator)
             implementation(libs.voyager.screenmodel)
+            implementation(libs.koin.compose)
+            implementation(libs.koin.compose.viewmodel)
+            implementation(libs.koin.compose.viewmodel.navigation)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
